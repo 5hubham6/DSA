@@ -1,12 +1,19 @@
 class Solution {
 public:
-    int strStr(string haystack, string needle) {
-        int n = haystack.length();
-        int m = needle.length();
-        if (m == 0) return 0;
-        if (n < m) return -1;
-        for (int i = 0; i <= n - m; ++i) {
-            if (haystack.substr(i, m) == needle) {
+    int strStr(std::string haystack, std::string needle) {
+        if (needle.empty()) {
+            return 0;
+        }
+
+        for (int i = 0; i <= (int)haystack.size() - (int)needle.size(); ++i) {
+            bool found = true;
+            for (int j = 0; j < (int)needle.size(); ++j) {
+                if (haystack[i + j] != needle[j]) {
+                    found = false;
+                    break;
+                }
+            }
+            if (found) {
                 return i;
             }
         }
