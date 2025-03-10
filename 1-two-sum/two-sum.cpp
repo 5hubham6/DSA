@@ -1,18 +1,17 @@
+#include <vector>
+#include <unordered_map>
+
 class Solution {
 public:
     std::vector<int> twoSum(std::vector<int>& nums, int target) {
-        std::unordered_map<int, int> complements;
-        
+        std::unordered_map<int, int> numMap;
         for (int i = 0; i < nums.size(); ++i) {
             int complement = target - nums[i];
- 
-            auto it = complements.find(nums[i]);
-            if (it != complements.end()) {
-                return {it->second, i};
+            if (numMap.find(complement) != numMap.end()) {
+                return {numMap[complement], i};
             }
-       
-            complements[complement] = i;
+            numMap[nums[i]] = i;
         }
-        return  {};
+        return {}; // Should not reach here as there's always a solution
     }
 };
