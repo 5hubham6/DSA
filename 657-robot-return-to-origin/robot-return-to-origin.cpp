@@ -1,25 +1,18 @@
 class Solution {
 public:
-    bool judgeCircle(string moves) {
-        int h=0;
-        int v=0;
-        for(auto mov:moves){
-            switch(mov){
-                case 'R':
-                 ++h;
-                 break;
-                case 'L':
-                 --h;
-                 break;
-                case 'U':
-                 ++v;
-                 break;
-                case 'D':
-                 --v;
-                 break;
-                
+    bool judgeCircle(std::string moves) {
+        int x = 0, y = 0;
+        for (char move : moves) {
+            if (move == 'U') {
+                y++;
+            } else if (move == 'D') {
+                y--;
+            } else if (move == 'R') {
+                x++;
+            } else if (move == 'L') {
+                x--;
             }
         }
-        return v==0 && h==0;
+        return x == 0 && y == 0;
     }
 };
